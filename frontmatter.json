@@ -12,6 +12,12 @@
           "type": "string"
         },
         {
+          "title": "slug",
+          "name": "slug",
+          "type": "string",
+          "single": true
+        },
+        {
           "title": "description",
           "name": "description",
           "type": "string"
@@ -24,17 +30,14 @@
         {
           "title": "image",
           "name": "image",
-          "type": "image"
+          "type": "image",
+          "isPreviewImage": true
         },
         {
           "title": "author",
           "name": "author",
-          "type": "string"
-        },
-        {
-          "title": "slug",
-          "name": "slug",
-          "type": "string"
+          "type": "string",
+          "single": true
         }
       ]
     }
@@ -45,7 +48,8 @@
   "frontMatter.content.pageFolders": [
     {
       "title": "blog",
-      "path": "[[workspace]]/src/content/blog"
+      "path": "[[workspace]]/src/content/blog",
+      "previewPath": "'blog'"
     }
   ],
   "frontMatter.taxonomy.tags": [],

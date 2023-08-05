@@ -18,7 +18,9 @@ const blog = defineCollection({
 		image: image().refine((img) => img.width >= 630, {
       message: "Cover image must be at least 630 pixels wide!",
     }).optional(),
-		imageAlt: z.string().optional()
+		imageAlt: z.string().optional(),
+		categories: z.array(z.string().optional()).optional(),
+		tags: z.array(z.string().optional()).optional()
 	}),
 });
 
