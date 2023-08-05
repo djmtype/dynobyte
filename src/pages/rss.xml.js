@@ -1,16 +1,31 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import settings from '../settings.json';
 
 export async function get(context) {
-	const posts = await getCollection('blog');
+	const blog = await getCollection('blog');
 	return rss({
-		title: SITE_TITLE,
-		description: SITE_DESCRIPTION,
-		site: context.site,
-		items: posts.map((post) => ({
-			...post.data,
-			link: `/blog/${post.slug}/`,
-		})),
+		title: settings.title,
+		description: settings.description,
+		
+		site: settings.url,
+		customData: `<language>en-us</language>`,
+
+		items: blog.map((post) => ({
+      title: post.data.title,
+      pubDate: post.data.date,
+      description: post.data.description,
+      customData: `<language>en-us</language>`,
+      // Compute RSS link from post `slug`
+      // This example assumes all posts are rendered as `/blog/[slug]` routes
+      link: `/blog/${post.slug}/`,
+    })),
+
+		// items: posts.map((post) => ({
+		// 	...post.data,
+		// 	link: `/blog/${post.slug}/`,
+		// 	pubDate: post.data.date,
+		// 	description: post.data.description
+		// })),
 	});
 }

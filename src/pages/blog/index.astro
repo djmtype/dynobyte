@@ -1,20 +1,38 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
-import { getCollection } from 'astro:content';
-import FormattedDate from '../../components/FormattedDate.astro';
+import { Image } from "astro:assets"
+import BaseHead from "../../components/BaseHead.astro"
+import Header from "../../components/Header.astro"
+import Footer from "../../components/Footer.astro"
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+import { getCollection, getEntry } from "astro:content"
+import FormattedDate from "../../components/FormattedDate.astro"
+import settings from '../../settings.json';
+
+const posts = (await getCollection("blog")).sort(
+	(a, b) => a.data.date.valueOf() - b.data.date.valueOf()
 );
+
+
+
+	
+
+const postsWithAuthors = await Promise.all(
+	posts.map(async (post) => {
+		const author = await getEntry(post.data.author);
+
+		return { post, author }
+	})
+);
+
+
+
+// console.dir(postsWithAuthors, { depth: 4 });
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<BaseHead title={settings.title} description={settings.description} />
 		<style>
 			main {
 				width: 960px;
@@ -87,21 +105,33 @@ const posts = (await getCollection('blog')).sort(
 	</head>
 	<body>
 		<Header />
+
 		<main>
 			<section>
+
+		
 				<ul>
 					{
-						posts.map((post) => (
-							<li>
-								<a href={`/blog/${post.slug}/`}>
-									<img width={720} height={360} src={post.data.heroImage} alt="" />
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
-										<FormattedDate date={post.data.pubDate} />
-									</p>
-								</a>
-							</li>
-						))
+						postsWithAuthors &&
+							postsWithAuthors.map(({ post, author }) => (
+								<li>
+									<a href={`/blog/${post.slug}/`}>
+
+										{post.data.image && 
+						<Image width={720} height={360} src={post.data.image} alt="" />
+						}
+
+										
+										<h4 class='title'>{post.data.title}</h4>
+									
+										<p>{author.data.name}</p>
+						
+										<p class='date'>
+											<FormattedDate date={post.data.date} />
+										</p>
+									</a>
+								</li>
+							))
 					}
 				</ul>
 			</section>
