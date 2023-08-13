@@ -20,7 +20,8 @@ const blog = defineCollection({
     }).optional(),
 		imageAlt: z.string().optional(),
 		categories: z.array(z.string().optional()).optional(),
-		tags: z.array(z.string().optional()).optional()
+		tags: z.array(z.string().optional()).optional(),
+		status: z.string(z.enum(["draft", "publish"]).default("draft"))
 	}),
 });
 

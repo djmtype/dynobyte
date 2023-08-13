@@ -10,10 +10,22 @@ import settings from '../settings.json';
 <html lang="en">
 	<head>
 		<BaseHead title={settings.title} description={settings.description} />
+
+
+
+		<script type="module" src="https://unpkg.com/@splinetool/viewer@0.9.414/build/spline-viewer.js"></script>
+
 	</head>
 	<body>
 		<Header title={settings.title} />
-		<main>
+
+
+		<div class="containment">
+			<spline-viewer loading-anim url="https://prod.spline.design/V0DKB9iiaZbNWYyR/scene.splinecode"></spline-viewer>
+		</div>
+			
+			<main>
+
 			<h1>🧑‍🚀 Hello, Astronaut!</h1>
 			<p>
 				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
@@ -49,3 +61,15 @@ import settings from '../settings.json';
 		<Footer />
 	</body>
 </html>
+
+<style is:global>
+	spline-viewer {
+		width: 100%;
+		height: 100vh;
+		position: relative;
+		touch-action: initial !important;
+	}
+	.containment {
+		position: relative;
+	}
+</style>
