@@ -2,7 +2,7 @@
 title: Markdown Style Guide
 description: Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.
 date: 2022-07-01
-image: ../../assets/media/blog-placeholder-2.jpg
+image: ../../assets/uploads/blog-placeholder-1.jpg
 imageAlt: A description of this photo
 author: scott-rod
 slug: markdown-style-guide
@@ -11,7 +11,7 @@ status: publish
 
 Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.
 
-![This is a test value](../../assets/media/blog-placeholder-1.jpg)
+![This is a test value](../../assets/uploads/blog-placeholder-1.jpg)
 
 ## Headings
 
@@ -37,7 +37,7 @@ Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sap
 
 ## Images
 
-![This is a placeholder image description](/blog-placeholder-1.jpg)
+![This is a placeholder image description](../../assets/uploads/blog-placeholder-3.jpg)
 
 ## Blockquotes
 

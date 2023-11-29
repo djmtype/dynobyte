@@ -6,23 +6,11 @@ import Header from "../components/Header.astro"
 import Footer from "../components/Footer.astro"
 import FormattedDate from "../components/FormattedDate.astro"
 
-type Props = CollectionEntry<"blog">["data"] & {
-	slug: string
-}
-// type Props = {
-// 	post: CollectionEntry<"blog">["data"],
-// 	slug?: string;
-// 	title?: string;
-//   date?: any;
-//   image?: any;
-//   description?: string;
-//   updatedDate?: string;
-// }
+type Props = CollectionEntry<"pages">["data"]
 
 
 
-
-const { title, description, date, updatedDate, image, slug } = Astro.props
+const { title, description, date, updatedDate, image } = Astro.props
 ---
 
 <html lang='en' data-theme="light">
@@ -72,10 +60,9 @@ const { title, description, date, updatedDate, image, slug } = Astro.props
 	<body>
 		<Header />
 		<main>
-			<div class="prose"><a href="/blog">Blog</a></div>
 			<article>
 				<div class='hero-image'>
-					{image && <Image width={1020} height={510} src={image} alt='' transition:name={`image-${slug}`} />}
+					{image && <Image width={1020} height={510} src={image} alt='' />}
 				</div>
 				<div class='prose'>
 					<div class='title'>

@@ -2,7 +2,7 @@
 title: Second Post Title
 description: Lorem ipsum dolor sit amet and so on
 date: 2022-07-22
-image: ../../assets/media/blog-placeholder-2.jpg
+image: ../../assets/uploads/blog-placeholder-2.jpg
 imageAlt: "A description of this photo"
 author: scott-rod
 slug: second-post
@@ -13,7 +13,7 @@ tags:
 status: publish
 ---
 
-## Heading
+## Initial Heading Starts Here
 
 ### Header Three
 

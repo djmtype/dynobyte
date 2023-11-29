@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
-import settings from './src/settings.json';
+import settings from './src/data/settings.json';
 import remarkUnwrapImages from "remark-unwrap-images";
 import partytown from "@astrojs/partytown";
 
