@@ -16,9 +16,6 @@ export default defineConfig({
     remarkPlugins: [remarkUnwrapImages],
   },
 
-  experimental: {
-    assets: true,
-    viewTransitions: true
-  },
+
 
 });
